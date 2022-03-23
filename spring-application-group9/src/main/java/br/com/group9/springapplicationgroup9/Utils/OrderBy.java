@@ -1,6 +1,12 @@
 package br.com.group9.springapplicationgroup9.Utils;
 
+import br.com.group9.springapplicationgroup9.Entity.Product;
+
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class OrderBy<T> {
     private T tipo;
@@ -13,13 +19,29 @@ public class OrderBy<T> {
 
     }
 
-    public ArrayList<Product> orderProducts(ArrayList<Product> productList, int typeOfOrder) {
-        ArrayList<Product> returnList;
+    public List<Product> orderProducts(ArrayList<Product> productList, int typeOfOrder) {
+        List<Product> returnList = Collections.emptyList();
 
-        if (typeOfOrder == 0) {
-            Comparator<Product> nameComparator = (h1, h2) -> h1.getName().compareTo(h2.getName());
-            returnList = productList.stream().sorted(nameComparator).collect(Collectos.toList());
+        Comparator<Product> nameComparator = (h1, h2) -> h1.getName().compareTo(h2.getName());
+        Comparator<Product> priceComparator = (h1, h2) -> h1.getPrice().compareTo(h2.getPrice());
+
+        switch (typeOfOrder) {
+            case 0:
+                returnList = productList.stream().sorted(nameComparator).collect(Collectors.toList());
+                break;
+
+            case 1:
+                returnList = productList.stream().sorted(nameComparator.reversed()).collect(Collectors.toList());
+                break;
+
+            case 2:
+                returnList = productList.stream().sorted(priceComparator).collect(Collectors.toList());
+                break;
+
+            case 3:
+                returnList = productList.stream().sorted(priceComparator.reversed()).collect(Collectors.toList());
+                break;
         }
-        return productList;
+        return returnList;
     }
 }
