@@ -19,18 +19,18 @@ public class ProductRepository implements IRepository<Product, Long> {
     private ProductHandler jsonFile;
 
     @Override
-    public boolean add(Product newProduct) {
+    public void add(Product newProduct) {
         // TODO: Validar regra de negócio sobre ID único
         List<Product> products = jsonFile.read();
         products.add(newProduct);
-        return jsonFile.save(products);
+        jsonFile.save(products);
     }
 
     @Override
-    public boolean addAll(List<Product> newProducts) {
+    public void addAll(List<Product> newProducts) {
         List<Product> products = jsonFile.read();
         products.addAll(newProducts);
-        return jsonFile.save(products);
+        jsonFile.save(products);
     }
 
     @Override
