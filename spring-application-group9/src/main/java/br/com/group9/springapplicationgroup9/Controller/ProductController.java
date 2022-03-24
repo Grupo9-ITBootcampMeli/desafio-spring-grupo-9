@@ -1,5 +1,6 @@
 package br.com.group9.springapplicationgroup9.Controller;
 
+import br.com.group9.springapplicationgroup9.Dto.ProductoDTO;
 import br.com.group9.springapplicationgroup9.Entity.Product;
 import br.com.group9.springapplicationgroup9.Service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +23,9 @@ public class ProductController {
     }
 
     @GetMapping("/v1/articles")
-    public ResponseEntity<String> getArticles(@RequestParam Map<String, String> params, @RequestParam (name = "order", required = false) String order) {
-        return ResponseEntity.ok(productService.listProducts(params).toString());
+    public ResponseEntity<List<ProductoDTO>> getArticles(@RequestParam Map<String, String> params, @RequestParam (name = "order", required = false) String order) {
+        List<ProductoDTO> result = ProductoDTO.converte(productService.listProducts(params));
+        return ResponseEntity.ok(result);
     }
 
 }
