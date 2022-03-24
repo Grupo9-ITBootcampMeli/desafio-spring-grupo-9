@@ -33,8 +33,13 @@ public class ProductService {
             .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
     }
 
-    public void registerProducts(List<Product> products) {
-        repository.addAll(products);
+    public List<Product> registerProducts(List<Product> products) {
+        List<Product> insertedProducts = new ArrayList<>();
+        for (Product product : products) {
+            if (repository.add(product))
+                insertedProducts.add(product);
+        }
+        return insertedProducts;
     }
 
     public List<Product> listProducts(Map<String, String> params) {
