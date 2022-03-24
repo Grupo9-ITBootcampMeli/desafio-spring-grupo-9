@@ -14,7 +14,6 @@ import java.util.List;
 @AllArgsConstructor
 @Repository
 public class ProductRepository implements IRepository<Product, Long> {
-
     @Autowired
     private ProductHandler jsonFile;
 
