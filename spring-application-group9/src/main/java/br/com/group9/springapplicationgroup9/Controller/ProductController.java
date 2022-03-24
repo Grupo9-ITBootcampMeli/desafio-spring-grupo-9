@@ -27,9 +27,9 @@ public class ProductController {
     @GetMapping("/v1/articles")
     public ResponseEntity<List<ProductoDTO>> getArticles(
             @RequestParam Map<String, String> params,
-            @RequestParam (name = "order", required = false) String order
+            @RequestParam (name = "order", required = false) Integer order
     ) {
-        List<ProductoDTO> result = ProductoDTO.converte(productService.listProducts(params));
+        List<ProductoDTO> result = ProductoDTO.converte(productService.listProducts(params, order));
         return ResponseEntity.ok(result);
     }
 
