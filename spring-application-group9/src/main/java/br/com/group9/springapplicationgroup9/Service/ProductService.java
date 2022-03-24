@@ -42,18 +42,4 @@ public class ProductService {
         }
         return filteredProducts.collect(Collectors.toList());
     }
-
-    public static void main(String[] args) {
-//        TESTE
-        ProductHandler handlerTeste = new ProductHandler();
-        ProductRepository repositoryTeste = new ProductRepository(handlerTeste);
-        ProductService serviceTeste = new ProductService(repositoryTeste);
-
-        Map<String, String> reqParams = new HashMap<>();
-        reqParams.put("name", "Furadeira");
-        reqParams.put("price", "1500");
-//        reqParams.put("order", "1");
-        List<Product> products = serviceTeste.listProducts(reqParams);
-        products.forEach(p -> System.out.println(p.getName()));
-    }
 }
