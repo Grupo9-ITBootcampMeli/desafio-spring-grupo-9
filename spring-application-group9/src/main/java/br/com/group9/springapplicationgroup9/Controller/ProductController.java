@@ -1,5 +1,6 @@
 package br.com.group9.springapplicationgroup9.Controller;
 
+import br.com.group9.springapplicationgroup9.Dto.NewProductsDTO;
 import br.com.group9.springapplicationgroup9.Dto.ProductoDTO;
 import br.com.group9.springapplicationgroup9.Entity.Product;
 import br.com.group9.springapplicationgroup9.Service.ProductService;
@@ -17,13 +18,17 @@ public class ProductController {
     private ProductService productService;
 
     @PostMapping("/v1/insert-articles")
-    public ResponseEntity<String> insertArticles(@RequestBody List<Product> product){
+    public ResponseEntity<List<NewProductsDTO>> insertArticles(@RequestBody List<Product> product){
         productService.registerProducts(product);
-        return ResponseEntity.ok("OK");
+        List<NewProductsDTO> result = NewProductsDTO.converte(product);
+        return ResponseEntity.ok(result);
     }
 
     @GetMapping("/v1/articles")
-    public ResponseEntity<List<ProductoDTO>> getArticles(@RequestParam Map<String, String> params, @RequestParam (name = "order", required = false) String order) {
+    public ResponseEntity<List<ProductoDTO>> getArticles(
+            @RequestParam Map<String, String> params,
+            @RequestParam (name = "order", required = false) String order
+    ) {
         List<ProductoDTO> result = ProductoDTO.converte(productService.listProducts(params));
         return ResponseEntity.ok(result);
     }
