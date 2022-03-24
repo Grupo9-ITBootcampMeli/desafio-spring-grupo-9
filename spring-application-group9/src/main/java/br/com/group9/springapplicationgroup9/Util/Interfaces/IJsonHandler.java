@@ -1,4 +1,4 @@
-package br.com.group9.springapplicationgroup9.Util;
+package br.com.group9.springapplicationgroup9.Util.Interfaces;
 
 import java.util.List;
 
