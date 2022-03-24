@@ -19,6 +19,10 @@ public class PurchaseHandler implements IJsonHandler<Purchase> {
     private final File PURCHASE_FILE = new File(PURCHASE_PATH);
     private ObjectMapper objectMapper;
 
+    public PurchaseHandler() {
+        objectMapper = new ObjectMapper();
+    }
+
     @Override
     public List<Purchase> read() {
         try {
