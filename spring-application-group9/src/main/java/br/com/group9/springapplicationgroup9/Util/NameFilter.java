@@ -11,11 +11,11 @@ public class NameFilter implements IFilter<Product> {
 
     @Override
     public List<Product> apply(List<Product> t, String value) {
-        return t.stream().filter(x -> x.getName().equalsIgnoreCase(value)).collect(Collectors.toList());
+        return t.stream().filter(x -> x.getName().contains(value)).collect(Collectors.toList());
     }
 
     @Override
     public Stream<Product> applyStream(Stream<Product> t, String value) {
-        return t.filter(x -> x.getName().equalsIgnoreCase(value));
+        return t.filter(x -> x.getName().contains(value));
     }
 }
