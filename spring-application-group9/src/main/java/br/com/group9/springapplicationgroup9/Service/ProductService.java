@@ -4,13 +4,11 @@ import br.com.group9.springapplicationgroup9.Entity.Product;
 import br.com.group9.springapplicationgroup9.Repository.ProductRepository;
 import br.com.group9.springapplicationgroup9.Util.Interfaces.IFilter;
 import br.com.group9.springapplicationgroup9.Util.FilterEnum;
-import br.com.group9.springapplicationgroup9.Util.ProductHandler;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -42,7 +40,7 @@ public class ProductService {
         return insertedProducts;
     }
 
-    public List<Product> listProducts(Map<String, String> params) {
+    public List<Product> listProducts(Map<String, String> params, Integer order) {
         Map<IFilter, String> filters = validateParams(params);
         List<Product> allProducts = repository.getAll();
         Stream<Product> filteredProducts = allProducts.stream();

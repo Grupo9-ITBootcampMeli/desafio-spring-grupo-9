@@ -22,8 +22,8 @@ public class ProductController {
     }
 
     @GetMapping("/v1/articles")
-    public ResponseEntity<String> getArticles(@RequestParam Map<String, String> params, @RequestParam (name = "order", required = false) String order) {
-        return ResponseEntity.ok(productService.listProducts(params).toString());
+    public ResponseEntity<String> getArticles(@RequestParam Map<String, String> params, @RequestParam (name = "order", required = false) Integer order) {
+        return ResponseEntity.ok(productService.listProducts(params, order).toString());
     }
 
 }
