@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -19,7 +20,7 @@ import java.util.stream.Stream;
 @Service
 public class ProductService {
     @Autowired
-    ProductRepository repository;
+    private ProductRepository repository;
 
     // Método para receber RequestParams e validar/converter para a classe cadastrada no Enum
     // Entrada: Map<String, String>
@@ -30,6 +31,10 @@ public class ProductService {
             .filter(param -> FilterEnum.get(param.getKey()) != null)
             .map(param -> Map.entry(FilterEnum.get(param.getKey()).getFilter(), param.getValue()))
             .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+    }
+
+    public void registerProducts(List<Product> products) {
+        repository.addAll(products);
     }
 
     public List<Product> listProducts(Map<String, String> params) {
