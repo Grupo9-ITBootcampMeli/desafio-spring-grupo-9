@@ -1,4 +1,4 @@
-package br.com.group9.springapplicationgroup9.Util;
+package br.com.group9.springapplicationgroup9.Utils;
 
 import br.com.group9.springapplicationgroup9.Entity.Product;
 
