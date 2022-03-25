@@ -1,6 +1,6 @@
 package br.com.group9.springapplicationgroup9.Util;
 
-import br.com.group9.springapplicationgroup9.Entity.Purchase;
+import br.com.group9.springapplicationgroup9.Dto.PurchaseDTO;
 import br.com.group9.springapplicationgroup9.Util.Interfaces.IJsonHandler;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -14,7 +14,7 @@ import java.util.List;
 
 @AllArgsConstructor
 @Component
-public class PurchaseHandler implements IJsonHandler<Purchase> {
+public class PurchaseHandler implements IJsonHandler<PurchaseDTO> {
     private final String PURCHASE_PATH = DEFAULT_PATH.concat("purchases.json");
     private final File PURCHASE_FILE = new File(PURCHASE_PATH);
     private ObjectMapper objectMapper;
@@ -24,17 +24,18 @@ public class PurchaseHandler implements IJsonHandler<Purchase> {
     }
 
     @Override
-    public List<Purchase> read() {
+    public List<PurchaseDTO> read() {
         try {
-            return objectMapper.readValue(PURCHASE_FILE, new TypeReference<List<Purchase>>() {});
+            return objectMapper.readValue(PURCHASE_FILE, new TypeReference<>() {
+            });
         } catch (IOException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
             return new ArrayList<>();
         }
     }
 
     @Override
-    public boolean save(List<Purchase> list) {
+    public boolean save(List<PurchaseDTO> list) {
         try {
             objectMapper.writeValue(PURCHASE_FILE, list);
             return true;

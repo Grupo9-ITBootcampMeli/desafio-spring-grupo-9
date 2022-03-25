@@ -11,9 +11,15 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 public class Purchase {
-    private Long purchaseId;
+    protected int purchaseId = 1;
     private List<Product> products;
     private BigDecimal total;
+
+    public Purchase(List<Product> products, BigDecimal total){
+        this.products = products;
+        this.total = total;
+        this.purchaseId = this.getPurchaseId();
+        this.setPurchaseId(this.getPurchaseId() + 1);
+    }
 }
