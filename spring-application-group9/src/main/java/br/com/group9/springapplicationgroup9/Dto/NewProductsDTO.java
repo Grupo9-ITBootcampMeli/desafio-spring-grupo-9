@@ -13,19 +13,24 @@ import java.util.stream.Collectors;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-// DTO para o endpoint de GET
+/**Classe para DTO que será retornado na requisição insertArticles no controle de produto.
+ * @author Amanda Zara, André Veziane, Antônio Schappo, Guilherme Pereira, Joan Davi, Vinicius Clemente
+ * @version 1.00
+ * @since Release 01 da aplicação
+ */
 public class NewProductsDTO {
     private Long productId;
     private String name;
     private Integer quantity;
 
 
-    public NewProductsDTO converte(Product product) {
-        this.productId = product.getProductId();
-        this.name = product.getName();
-        this.quantity = product.getQuantity();
-        return this;
-    }
+    /**Método usado no controller para converter a lista de produtos recebida pelo client em uma lista de Dtos de produto
+     * a ser enviada na response.
+
+     * @param products List<Product> - Recebe a lista de produtos que o cliente deseja persistir.
+     * @return List<NewProductsDTO> - Retorna a lista de produtos para response após a inserção ser realizada.
+     */
+
 
     public static List<NewProductsDTO> converte(List<Product> products) {
         return products.stream().map(

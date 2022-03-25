@@ -7,8 +7,13 @@ import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
+
+/**Classe para DTO que será retornado na requisição getArticles no controle de produto.
+ * @author Amanda Zara, André Veziane, Antônio Schappo, Guilherme Pereira, Joan Davi, Vinicius Clemente
+ * @version 1.00
+ * @since Release 01 da aplicação
+ */
 
 @Data
 @NoArgsConstructor
@@ -22,14 +27,12 @@ public class ProductoDTO {
     private Boolean freeShipping;
     private String prestige;
 
-    public ProductoDTO converte(Product product) {
-        this.productId = product.getProductId();
-        this.name = product.getName();
-        this.price = product.getPrice();
-        this.freeShipping = product.getFreeShipping();
-        this.prestige = product.getPrestige();
-        return this;
-    }
+    /**Método usado no controller para enviar a consulta ao cliente quando o mesmo realiza uma requisição get.
+
+     * @param products List<Product> - Recebe a lista de produtos que estão no repositório.
+     * @return List<ProductoDTO> - Retorna a lista de produtos em forma Dto.
+     */
+
 
     public static List<ProductoDTO> converte(List<Product> products) {
         return products.stream().map(

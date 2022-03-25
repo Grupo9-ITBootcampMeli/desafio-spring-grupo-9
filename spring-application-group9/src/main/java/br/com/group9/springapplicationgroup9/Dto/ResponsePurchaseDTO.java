@@ -14,11 +14,4 @@ public class ResponsePurchaseDTO {
     private List<PurchaseDTO> purchaseList;
     private BigDecimal totalPurchase;
 
-    @Override
-    public String toString() {
-        return "ResponsePurchaseDTO{" +
-                "purchaseList=" + purchaseList +
-                ", totalPurchase=" + totalPurchase +
-                '}';
-    }
 }
