@@ -4,13 +4,12 @@ import br.com.group9.springapplicationgroup9.Entity.Product;
 import br.com.group9.springapplicationgroup9.Repository.ProductRepository;
 import br.com.group9.springapplicationgroup9.Util.Interfaces.IFilter;
 import br.com.group9.springapplicationgroup9.Util.FilterEnum;
-import br.com.group9.springapplicationgroup9.Util.ProductHandler;
+import br.com.group9.springapplicationgroup9.Util.OrderBy;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -37,14 +36,19 @@ public class ProductService {
         repository.addAll(products);
     }
 
-    public List<Product> listProducts(Map<String, String> params) {
+    public List<Product> listProducts(Map<String, String> params, Integer order) {
         Map<IFilter, String> filters = validateParams(params);
         List<Product> allProducts = repository.getAll();
-        Stream<Product> filteredProducts = allProducts.stream();
+        Stream<Product> productsToBeFiltered = allProducts.stream();
         for (Map.Entry<IFilter, String> param : filters.entrySet()) {
             IFilter filter = param.getKey();
-            filteredProducts = filter.applyStream(filteredProducts, param.getValue());
+            productsToBeFiltered = filter.applyStream(productsToBeFiltered, param.getValue());
         }
-        return filteredProducts.collect(Collectors.toList());
+        OrderBy<Product> orderBy = new OrderBy(Product.class);
+        ArrayList<Product> productsToBeOrdered = productsToBeFiltered.collect(Collectors.toCollection(ArrayList::new));
+        if (order == null)
+            return productsToBeOrdered;
+        else
+            return orderBy.orderProducts(productsToBeOrdered, order);
     }
 }

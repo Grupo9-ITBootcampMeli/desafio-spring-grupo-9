@@ -8,14 +8,12 @@ import java.util.concurrent.ConcurrentHashMap;
 
 // Enum de relação de filtros de acordo com o nome do RequestParam
 public enum FilterEnum {
-    nameFilter(new NameFilter(), "name");
-//    TODO: Criar as classes correspondentes aos filtros desenvolvidos e inserir conforme abaixo.
-//    categoryFilter(new NameFilter(), "category"),
-//    brandFilter(new NameFilter(), "brand"),
-//    priceFilter(new NameFilter(), "price"),
-//    freeShippingFilter(new NameFilter(), "freeShipping"),
-//    prestigeFilter(new NameFilter(), "prestige");
-//    orderFilter(new NameFilter(), "order");
+    nameFilter(new NameFilter(), "name"),
+    categoryFilter(new CategoryFilter(), "category"),
+    brandFilter(new BrandFilter(), "brand"),
+    priceFilter(new PriceFilter(), "price"),
+    freeShippingFilter(new FreeShippingFilter(), "freeShipping"),
+    prestigeFilter(new PrestigeFilter(), "prestige");
 
     private IFilter filter;
     private String filterName;
