@@ -14,26 +14,22 @@ import java.util.stream.Collectors;
 @NoArgsConstructor
 @AllArgsConstructor
 // DTO para o endpoint de GET
-public class ProductoDTO {
-
+public class NewProductsDTO {
     private Long productId;
     private String name;
-    private BigDecimal price;
-    private Boolean freeShipping;
-    private String prestige;
+    private Integer quantity;
 
-    public ProductoDTO converte(Product product) {
+
+    public NewProductsDTO converte(Product product) {
         this.productId = product.getProductId();
         this.name = product.getName();
-        this.price = product.getPrice();
-        this.freeShipping = product.getFreeShipping();
-        this.prestige = product.getPrestige();
+        this.quantity = product.getQuantity();
         return this;
     }
 
-    public static List<ProductoDTO> converte(List<Product> products) {
+    public static List<NewProductsDTO> converte(List<Product> products) {
         return products.stream().map(
-                p -> new ProductoDTO(p.getProductId(), p.getName(), p.getPrice(), p.getFreeShipping(), p.getPrestige())
+                p -> new NewProductsDTO(p.getProductId(), p.getName(), p.getQuantity())
         ).collect(Collectors.toList());
     }
 }
