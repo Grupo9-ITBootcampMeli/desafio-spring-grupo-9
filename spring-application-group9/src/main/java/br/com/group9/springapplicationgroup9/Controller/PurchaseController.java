@@ -7,12 +7,10 @@ import br.com.group9.springapplicationgroup9.Dto.RequestPurchaseDTO;
 
 import br.com.group9.springapplicationgroup9.Dto.ResponsePurchaseDTO;
 import br.com.group9.springapplicationgroup9.Service.PurchaseService;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
-import java.util.BitSet;
 import java.util.List;
 
 @RestController
@@ -28,7 +26,7 @@ public class PurchaseController {
             return ResponseEntity.ok(contains);
         } catch (Exception e) {
             e.printStackTrace();
-            return ResponseEntity.badRequest().body(contains);
+            return ResponseEntity.badRequest().build();
         }
     }
 

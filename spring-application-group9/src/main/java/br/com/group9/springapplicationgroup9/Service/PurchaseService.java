@@ -27,28 +27,39 @@ public class PurchaseService {
     private ProductRepository productRepository = new ProductRepository(new ProductHandler());
     private PurchaseRepository purchaseRepository = new PurchaseRepository(new PurchaseHandler());
 
+    private List<Product> returnList = new ArrayList<Product>();
+    private BigDecimal total = BigDecimal.ZERO;
 
+    private void addPurchase(RequestPurchaseDTO purchase, Product product) {
+        Product prod = new Product(product, purchase.getQuantity());
+        returnList.add(prod);
+        getTotal(purchase, product);
+    }
+
+    private void getTotal(RequestPurchaseDTO purchase, Product product) {
+        BigDecimal subTotal = product.getPrice().multiply(BigDecimal.valueOf(purchase.getQuantity()));
+        total = total.add(subTotal);
+    }
+
+    private boolean checkVal(RequestPurchaseDTO purchase, Product product) throws Exception {
+        if (purchase.getProductId() == product.getProductId()) {
+            if (purchase.getQuantity() > product.getQuantity()) {
+                throw new Exception("O produto: " + product.getName() + " não possuí essa quantidade em estoque");
+            }
+            addPurchase(purchase, product);
+            return true;
+        }
+        return false;
+    }
 
     public PurchaseDTO createPurchase(List<RequestPurchaseDTO> purchaseList) throws Exception {
         List<Product> productList = productRepository.getAll();
-        List<Product> returnList = new ArrayList<Product>();
-        BigDecimal total = BigDecimal.ZERO;
         boolean contains = false;
-
         for (int i = 0; i < purchaseList.size(); i++) {
             contains = false;
             for (int j = 0; j < productList.size(); j++) {
-                if (purchaseList.get(i).getProductId() == productList.get(j).getProductId()) {
-                    if (purchaseList.get(i).getQuantity() > productList.get(j).getQuantity()) {
-                        throw new Exception("O produto: " + productList.get(j).getName() + " não possuí essa quantidade em estoque");
-                    }
-                    contains = true;
-                    Product product = new Product(productList.get(j), purchaseList.get(i).getQuantity());
-                    returnList.add(product);
-                    BigDecimal subTotal = productList.get(j).getPrice().multiply(BigDecimal.valueOf(purchaseList.get(i).getQuantity()));
-                    total = total.add(subTotal);
-                    break;
-                }
+                contains = checkVal(purchaseList.get(i), productList.get(j));
+                if (contains) break;
             }
             if (!contains) {
                 throw new Exception("O produto: " + purchaseList.get(i).getName() + " não existe na base de dados");
