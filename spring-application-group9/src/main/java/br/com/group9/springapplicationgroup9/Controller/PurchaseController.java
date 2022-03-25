@@ -45,7 +45,7 @@ public class PurchaseController {
 
     /**Método get para consultar o valor total de todos os pedidos presentes na persistência.
      * Ele chama o Service de purchases que detêm as regras de negócio e retorna uma ResponseEntity com o valor total.
-     * @return retorno BigDecimal - Valor total das compras.
+     * @return retorno BigDecimal - Valor total das compras na persistência.
      */
 
     @GetMapping("/purchase/total")
