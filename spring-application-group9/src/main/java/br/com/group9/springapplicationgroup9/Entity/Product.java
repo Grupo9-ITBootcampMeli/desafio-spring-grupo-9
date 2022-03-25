@@ -20,4 +20,30 @@ public class Product {
     private Integer quantity;
     private Boolean freeShipping;
     private String prestige;
+
+    // Construtor de produto para compra
+    public Product(Product product, int purchaseQty) {
+        productId = product.getProductId();
+        name = product.getName();
+        category = product.getCategory();
+        brand = product.getBrand();
+        price = product.getPrice();
+        quantity = purchaseQty;
+        freeShipping = product.getFreeShipping();
+        prestige = product.getPrestige();
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "productId=" + productId +
+                ", name='" + name + '\'' +
+                ", category='" + category + '\'' +
+                ", brand='" + brand + '\'' +
+                ", price=" + price +
+                ", quantity=" + quantity +
+                ", freeShipping=" + freeShipping +
+                ", prestige='" + prestige + '\'' +
+                '}';
+    }
 }
