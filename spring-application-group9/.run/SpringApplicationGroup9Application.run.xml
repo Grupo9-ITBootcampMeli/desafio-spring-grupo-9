@@ -1,0 +1,10 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="SpringApplicationGroup9Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <module name="spring-application-group9" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="br.com.group9.springapplicationgroup9.SpringApplicationGroup9Application" />
+    <option name="ALTERNATIVE_JRE_PATH" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
