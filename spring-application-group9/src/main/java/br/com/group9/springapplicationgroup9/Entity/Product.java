@@ -11,6 +11,13 @@ import java.math.BigDecimal;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+/**Classe para a entidade que será persistida após uma requisição post bem sucedida através do metodo addArticles
+ * no controller do produto.
+ * @author Amanda Zara, André Veziane, Antônio Schappo, Guilherme Pereira, Joan Davi, Vinicius Clemente
+ * @version 1.00
+ * @since Release 01 da aplicação
+ */
+
 public class Product {
     private Long productId;
     private String name;
