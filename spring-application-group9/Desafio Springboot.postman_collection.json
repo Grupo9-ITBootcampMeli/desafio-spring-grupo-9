@@ -1,0 +1,526 @@
+{
+	"info": {
+		"_postman_id": "4af481d3-d17b-409d-b7d5-891ffec16e9a",
+		"name": "Desafio Springboot",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Purchase",
+			"item": [
+				{
+					"name": "Create Purchase",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n      {\n         \"productId\":100,\n         \"name\":\"Serra de Bancada\",\n         \"brand\":\"FORTGPRO\",\n         \"quantity\":1\n       },\n      {\n         \"productId\":2,\n         \"name\":\"Furadeira\",\n          \"brand\":\"Black & Decker\",\n          \"quantity\":2\n       }\n     ]\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/purchase",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"purchase"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Purchase - Successfully",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "[\n      {\n         \"productId\":1,\n         \"name\":\"Serra de Bancada\",\n         \"brand\":\"FORTGPRO\",\n         \"quantity\":1\n       },\n      {\n         \"productId\":2,\n         \"name\":\"Furadeira\",\n          \"brand\":\"Black & Decker\",\n          \"quantity\":2\n       }\n     ]\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/purchase",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"purchase"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 25 Mar 2022 20:17:26 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"purchaseId\": 5,\n    \"total\": 2800,\n    \"products\": [\n        {\n            \"productId\": 1,\n            \"name\": \"Serra de Bancada\",\n            \"category\": \"Ferramentas\",\n            \"brand\": \"FORTGPRO\",\n            \"price\": 1800,\n            \"quantity\": 1,\n            \"freeShipping\": true,\n            \"prestige\": \"****\"\n        },\n        {\n            \"productId\": 2,\n            \"name\": \"Furadeira\",\n            \"category\": \"Ferramentas\",\n            \"brand\": \"Black & Decker\",\n            \"price\": 500,\n            \"quantity\": 2,\n            \"freeShipping\": true,\n            \"prestige\": \"****\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "Create Purchase - Failed",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "[\n      {\n         \"productId\":100,\n         \"name\":\"Serra de Bancada\",\n         \"brand\":\"FORTGPRO\",\n         \"quantity\":1\n       },\n      {\n         \"productId\":2,\n         \"name\":\"Furadeira\",\n          \"brand\":\"Black & Decker\",\n          \"quantity\":2\n       }\n     ]\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/purchase",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"purchase"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "0"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 25 Mar 2022 20:37:56 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Get Total Purchase",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{local}}/purchase/total",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"purchase",
+								"total"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Total Purchase - Successfully",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{local}}/purchase/total",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"purchase",
+										"total"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 25 Mar 2022 20:39:25 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "71073"
+						},
+						{
+							"name": "Get Total Purchase - Failed",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{local}}/purchase/total",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"purchase",
+										"total"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 25 Mar 2022 20:40:13 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "0"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Insert Product List",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n {\n  \"productId\": 1,\n  \"name\": \"Serra de Bancada\",\n  \"category\": \"Ferramentas\",\n  \"brand\": \"FORTGPRO\",\n  \"price\": 1.800,\n  \"quantity\": 5,\n  \"freeShipping\": true,\n  \"prestige\": \"****\"\n },\n {\n  \"productId\": 2,\n  \"name\": \"Furadeira\",\n  \"category\": \"Ferramentas\",\n  \"brand\": \"Black & Decker\",\n  \"price\": 500,\n  \"quantity\": 7,\n  \"freeShipping\": true,\n  \"prestige\": \"****\"\n },\n {\n  \"productId\": 3,\n  \"name\": \"Soldadora\",\n  \"category\": \"Ferramentas\",\n  \"brand\": \"Black & Decker\",\n  \"price\": 350,\n  \"quantity\": 10,\n  \"freeShipping\": true,\n  \"prestige\": \"***\"\n },\n {\n  \"productId\": 4,\n  \"name\": \"Chuteira\",\n  \"category\": \"Esportes\",\n  \"brand\": \"Adidas\",\n  \"price\": 235,\n  \"quantity\": 6,\n  \"freeShipping\": true,\n  \"prestige\": \"*****\"\n },\n {\n  \"productId\": 5,\n  \"name\": \"Mini Cama elastica\",\n  \"category\": \"Esportes\",\n  \"brand\": \"Starboard\",\n  \"price\": 183,\n  \"quantity\": 4,\n  \"freeShipping\": true,\n  \"prestige\": \"*****\"\n },\n {\n  \"productId\": 6,\n  \"name\": \"Camiseta\",\n  \"category\": \"Esportes\",\n  \"brand\": \"Topper\",\n  \"price\": 80,\n  \"quantity\": 2,\n  \"freeShipping\": false,\n  \"prestige\": \"***\"\n },\n {\n  \"productId\": 7,\n  \"name\": \"Redmi Note 9\",\n  \"category\": \"Celulares\",\n  \"brand\": \"Xiaomi\",\n  \"price\": 2.800,\n  \"quantity\": 15,\n  \"freeShipping\": true,\n  \"prestige\": \"****\"\n },\n {\n  \"productId\": 8,\n  \"name\": \"Smartwatch\",\n  \"category\": \"Celulares\",\n  \"brand\": \"Noga\",\n  \"price\": 1.200,\n  \"quantity\": 20,\n  \"freeShipping\": false,\n  \"prestige\": \"**\"\n },\n {\n  \"productId\": 9,\n  \"name\": \"Camisa\",\n  \"category\": \"Roupas\",\n  \"brand\": \"Fila\",\n  \"price\": 79,\n  \"quantity\": 2,\n  \"freeShipping\": false,\n  \"prestige\": \"***\"\n },\n {\n  \"productId\": 10,\n  \"name\": \"Calças\",\n  \"category\": \"Roupas\",\n  \"brand\": \"Oakley\",\n  \"price\": 73,\n  \"quantity\": 6,\n  \"freeShipping\": false,\n  \"prestige\": \"***\"\n },\n {\n  \"productId\": 11,\n  \"name\": \"Meias\",\n  \"category\": \"Roupas\",\n  \"brand\": \"Gonew\",\n  \"price\": 10,\n  \"quantity\": 8,\n  \"freeShipping\": false,\n  \"prestige\": \"*\"\n },\n {\n  \"productId\": 12,\n  \"name\": \"Shorts\",\n  \"category\": \"Roupas\",\n  \"brand\": \"Lacoste\",\n  \"price\": 275,\n  \"quantity\": 9,\n  \"freeShipping\": true,\n  \"prestige\": \"***\"\n }\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/v1/insert-articles",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"v1",
+								"insert-articles"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Inset Product list - Successfully",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "[\n {\n  \"productId\": 1,\n  \"name\": \"Serra de Bancada\",\n  \"category\": \"Ferramentas\",\n  \"brand\": \"FORTGPRO\",\n  \"price\": 1.800,\n  \"quantity\": 5,\n  \"freeShipping\": true,\n  \"prestige\": \"****\"\n },\n {\n  \"productId\": 2,\n  \"name\": \"Furadeira\",\n  \"category\": \"Ferramentas\",\n  \"brand\": \"Black & Decker\",\n  \"price\": 500,\n  \"quantity\": 7,\n  \"freeShipping\": true,\n  \"prestige\": \"****\"\n },\n {\n  \"productId\": 3,\n  \"name\": \"Soldadora\",\n  \"category\": \"Ferramentas\",\n  \"brand\": \"Black & Decker\",\n  \"price\": 350,\n  \"quantity\": 10,\n  \"freeShipping\": true,\n  \"prestige\": \"***\"\n },\n {\n  \"productId\": 4,\n  \"name\": \"Chuteira\",\n  \"category\": \"Esportes\",\n  \"brand\": \"Adidas\",\n  \"price\": 235,\n  \"quantity\": 6,\n  \"freeShipping\": true,\n  \"prestige\": \"*****\"\n },\n {\n  \"productId\": 5,\n  \"name\": \"Mini Cama elastica\",\n  \"category\": \"Esportes\",\n  \"brand\": \"Starboard\",\n  \"price\": 183,\n  \"quantity\": 4,\n  \"freeShipping\": true,\n  \"prestige\": \"*****\"\n },\n {\n  \"productId\": 6,\n  \"name\": \"Camiseta\",\n  \"category\": \"Esportes\",\n  \"brand\": \"Topper\",\n  \"price\": 80,\n  \"quantity\": 2,\n  \"freeShipping\": false,\n  \"prestige\": \"***\"\n },\n {\n  \"productId\": 7,\n  \"name\": \"Redmi Note 9\",\n  \"category\": \"Celulares\",\n  \"brand\": \"Xiaomi\",\n  \"price\": 2.800,\n  \"quantity\": 15,\n  \"freeShipping\": true,\n  \"prestige\": \"****\"\n },\n {\n  \"productId\": 8,\n  \"name\": \"Smartwatch\",\n  \"category\": \"Celulares\",\n  \"brand\": \"Noga\",\n  \"price\": 1.200,\n  \"quantity\": 20,\n  \"freeShipping\": false,\n  \"prestige\": \"**\"\n },\n {\n  \"productId\": 9,\n  \"name\": \"Camisa\",\n  \"category\": \"Roupas\",\n  \"brand\": \"Fila\",\n  \"price\": 79,\n  \"quantity\": 2,\n  \"freeShipping\": false,\n  \"prestige\": \"***\"\n },\n {\n  \"productId\": 10,\n  \"name\": \"Calças\",\n  \"category\": \"Roupas\",\n  \"brand\": \"Oakley\",\n  \"price\": 73,\n  \"quantity\": 6,\n  \"freeShipping\": false,\n  \"prestige\": \"***\"\n },\n {\n  \"productId\": 11,\n  \"name\": \"Meias\",\n  \"category\": \"Roupas\",\n  \"brand\": \"Gonew\",\n  \"price\": 10,\n  \"quantity\": 8,\n  \"freeShipping\": false,\n  \"prestige\": \"*\"\n },\n {\n  \"productId\": 12,\n  \"name\": \"Shorts\",\n  \"category\": \"Roupas\",\n  \"brand\": \"Lacoste\",\n  \"price\": 275,\n  \"quantity\": 9,\n  \"freeShipping\": true,\n  \"prestige\": \"***\"\n }\n]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/v1/insert-articles",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"v1",
+										"insert-articles"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 25 Mar 2022 20:49:29 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"productId\": 1,\n        \"name\": \"Serra de Bancada\",\n        \"quantity\": 5\n    },\n    {\n        \"productId\": 2,\n        \"name\": \"Furadeira\",\n        \"quantity\": 7\n    },\n    {\n        \"productId\": 3,\n        \"name\": \"Soldadora\",\n        \"quantity\": 10\n    },\n    {\n        \"productId\": 4,\n        \"name\": \"Chuteira\",\n        \"quantity\": 6\n    },\n    {\n        \"productId\": 5,\n        \"name\": \"Mini Cama elastica\",\n        \"quantity\": 4\n    },\n    {\n        \"productId\": 6,\n        \"name\": \"Camiseta\",\n        \"quantity\": 2\n    },\n    {\n        \"productId\": 7,\n        \"name\": \"Redmi Note 9\",\n        \"quantity\": 15\n    },\n    {\n        \"productId\": 8,\n        \"name\": \"Smartwatch\",\n        \"quantity\": 20\n    },\n    {\n        \"productId\": 9,\n        \"name\": \"Camisa\",\n        \"quantity\": 2\n    },\n    {\n        \"productId\": 10,\n        \"name\": \"Calças\",\n        \"quantity\": 6\n    },\n    {\n        \"productId\": 11,\n        \"name\": \"Meias\",\n        \"quantity\": 8\n    },\n    {\n        \"productId\": 12,\n        \"name\": \"Shorts\",\n        \"quantity\": 9\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "List Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/v1/articles",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"v1",
+								"articles"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Camisa",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "ra",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get All Product List - Successfully",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/v1/articles",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"v1",
+										"articles"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "Camisa",
+											"disabled": true
+										},
+										{
+											"key": "name",
+											"value": "ra",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 25 Mar 2022 20:51:38 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"productId\": 1,\n        \"name\": \"Serra de Bancada\",\n        \"price\": 1.8,\n        \"freeShipping\": true,\n        \"prestige\": \"****\"\n    },\n    {\n        \"productId\": 2,\n        \"name\": \"Furadeira\",\n        \"price\": 500,\n        \"freeShipping\": true,\n        \"prestige\": \"****\"\n    },\n    {\n        \"productId\": 3,\n        \"name\": \"Soldadora\",\n        \"price\": 350,\n        \"freeShipping\": true,\n        \"prestige\": \"***\"\n    },\n    {\n        \"productId\": 4,\n        \"name\": \"Chuteira\",\n        \"price\": 235,\n        \"freeShipping\": true,\n        \"prestige\": \"*****\"\n    },\n    {\n        \"productId\": 5,\n        \"name\": \"Mini Cama elastica\",\n        \"price\": 183,\n        \"freeShipping\": true,\n        \"prestige\": \"*****\"\n    },\n    {\n        \"productId\": 6,\n        \"name\": \"Camiseta\",\n        \"price\": 80,\n        \"freeShipping\": false,\n        \"prestige\": \"***\"\n    },\n    {\n        \"productId\": 7,\n        \"name\": \"Redmi Note 9\",\n        \"price\": 2.8,\n        \"freeShipping\": true,\n        \"prestige\": \"****\"\n    },\n    {\n        \"productId\": 8,\n        \"name\": \"Smartwatch\",\n        \"price\": 1.2,\n        \"freeShipping\": false,\n        \"prestige\": \"**\"\n    },\n    {\n        \"productId\": 9,\n        \"name\": \"Camisa\",\n        \"price\": 79,\n        \"freeShipping\": false,\n        \"prestige\": \"***\"\n    },\n    {\n        \"productId\": 10,\n        \"name\": \"Calças\",\n        \"price\": 73,\n        \"freeShipping\": false,\n        \"prestige\": \"***\"\n    },\n    {\n        \"productId\": 11,\n        \"name\": \"Meias\",\n        \"price\": 10,\n        \"freeShipping\": false,\n        \"prestige\": \"*\"\n    },\n    {\n        \"productId\": 12,\n        \"name\": \"Shorts\",\n        \"price\": 275,\n        \"freeShipping\": true,\n        \"prestige\": \"***\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "List with filters",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{local}}/v1/articles?name=S&price=2500&order=1",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"v1",
+								"articles"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "S"
+								},
+								{
+									"key": "price",
+									"value": "2500"
+								},
+								{
+									"key": "order",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Filter name price and order DSC",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/v1/articles?name=S&price=2500&order=1",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"v1",
+										"articles"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "S"
+										},
+										{
+											"key": "price",
+											"value": "2500"
+										},
+										{
+											"key": "order",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 25 Mar 2022 20:52:22 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"productId\": 3,\n        \"name\": \"Soldadora\",\n        \"price\": 350,\n        \"freeShipping\": true,\n        \"prestige\": \"***\"\n    },\n    {\n        \"productId\": 8,\n        \"name\": \"Smartwatch\",\n        \"price\": 1.2,\n        \"freeShipping\": false,\n        \"prestige\": \"**\"\n    },\n    {\n        \"productId\": 12,\n        \"name\": \"Shorts\",\n        \"price\": 275,\n        \"freeShipping\": true,\n        \"prestige\": \"***\"\n    },\n    {\n        \"productId\": 1,\n        \"name\": \"Serra de Bancada\",\n        \"price\": 1.8,\n        \"freeShipping\": true,\n        \"prestige\": \"****\"\n    }\n]"
+						}
+					]
+				}
+			]
+		}
+	]
+}
